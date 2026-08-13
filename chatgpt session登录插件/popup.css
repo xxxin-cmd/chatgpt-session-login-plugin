@@ -1,0 +1,376 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, "Segoe UI", "Microsoft YaHei UI", sans-serif;
+  --ink: #10201c;
+  --muted: #66736f;
+  --line: #dfe7e3;
+  --surface: #ffffff;
+  --soft: #f4f8f6;
+  --accent: #0d8f6f;
+  --accent-dark: #087057;
+  --success: #0c7a5f;
+  --danger: #b33a3a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-width: 390px;
+  background: #edf3f0;
+  color: var(--ink);
+}
+
+body {
+  min-height: 520px;
+}
+
+button,
+select,
+textarea {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 520px;
+  padding: 24px 22px 18px;
+  background:
+    radial-gradient(circle at 100% 0, rgba(13, 143, 111, 0.12), transparent 34%),
+    var(--surface);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 46px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 15px;
+  background: var(--ink);
+  box-shadow: 0 8px 20px rgba(16, 32, 28, 0.16);
+}
+
+.brand-mark svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.35;
+}
+
+.brand-mark .brand-cut {
+  stroke: #71e1c4;
+}
+
+.eyebrow {
+  margin: 0 0 2px;
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+h1 {
+  margin: 0;
+  font-size: 21px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.session-badge {
+  padding: 5px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.session-badge[data-active="true"] {
+  border-color: #b9dfd3;
+  background: #eaf8f3;
+  color: var(--success);
+}
+
+.notice {
+  display: flex;
+  gap: 11px;
+  margin-bottom: 20px;
+  padding: 13px 14px;
+  border: 1px solid #d5e9e2;
+  border-radius: 14px;
+  background: #f2faf7;
+}
+
+.notice svg {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.notice div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.notice strong {
+  font-size: 12px;
+}
+
+.notice span {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+label,
+.label-row {
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label-row span {
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.select-wrap,
+.token-wrap {
+  position: relative;
+}
+
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  outline: none;
+  background: var(--soft);
+  color: var(--ink);
+  transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
+}
+
+select {
+  height: 42px;
+  padding: 0 40px 0 13px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.select-wrap > svg {
+  position: absolute;
+  top: 11px;
+  right: 13px;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--muted);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+  pointer-events: none;
+}
+
+textarea {
+  min-height: 88px;
+  padding: 12px 44px 12px 13px;
+  resize: vertical;
+  line-height: 1.45;
+}
+
+textarea[data-masked="true"] {
+  -webkit-text-security: disc;
+  text-security: disc;
+}
+
+textarea::placeholder {
+  color: #97a39f;
+}
+
+select:focus-visible,
+textarea:focus-visible {
+  border-color: var(--accent);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(13, 143, 111, 0.12);
+}
+
+.icon-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.icon-button:hover {
+  background: #e6eeea;
+  color: var(--ink);
+}
+
+.icon-button:focus-visible,
+.primary-button:focus-visible {
+  outline: 3px solid rgba(13, 143, 111, 0.24);
+  outline-offset: 2px;
+}
+
+.icon-button svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.eye-closed {
+  display: none;
+}
+
+.icon-button[aria-pressed="true"] .eye-open {
+  display: none;
+}
+
+.icon-button[aria-pressed="true"] .eye-closed {
+  display: block;
+}
+
+.field-help {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10.5px;
+  line-height: 1.45;
+}
+
+code {
+  font-family: Consolas, "SFMono-Regular", monospace;
+  font-size: 10px;
+}
+
+.status-message {
+  margin-top: -3px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.status-message[data-tone="success"] {
+  background: #eaf8f3;
+  color: var(--success);
+}
+
+.status-message[data-tone="error"] {
+  background: #fff0f0;
+  color: var(--danger);
+}
+
+.primary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 13px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 750;
+  box-shadow: 0 9px 20px rgba(13, 143, 111, 0.22);
+  cursor: pointer;
+  transition: transform 150ms ease, background 150ms ease, box-shadow 150ms ease;
+}
+
+.primary-button:hover {
+  background: var(--accent-dark);
+  box-shadow: 0 10px 24px rgba(13, 143, 111, 0.28);
+  transform: translateY(-1px);
+}
+
+.primary-button:active {
+  transform: translateY(0);
+}
+
+.primary-button:disabled {
+  background: #8bbbad;
+  box-shadow: none;
+  cursor: wait;
+  transform: none;
+}
+
+.primary-button svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+footer {
+  margin-top: 17px;
+  color: #84908c;
+  font-size: 10px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}

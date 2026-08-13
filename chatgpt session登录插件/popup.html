@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Session 登录</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M12 3.25a4.1 4.1 0 0 1 3.9 2.84 4.1 4.1 0 0 1 3.82 6.02 4.1 4.1 0 0 1-2.62 6.25 4.1 4.1 0 0 1-6.15 1.31 4.1 4.1 0 0 1-5.74-3.15 4.1 4.1 0 0 1-.98-6.41A4.1 4.1 0 0 1 8.1 4.18 4.08 4.08 0 0 1 12 3.25Z"/>
+            <path class="brand-cut" d="M8.2 8.9 12 6.7l3.8 2.2v4.4L12 15.5l-3.8-2.2V8.9Zm0 0L12 11l3.8-2.1M12 11v4.5"/>
+          </svg>
+        </div>
+        <div>
+          <p class="eyebrow">LOCAL SESSION</p>
+          <h1>登录 ChatGPT</h1>
+        </div>
+        <span id="sessionBadge" class="session-badge">检测中</span>
+      </header>
+
+      <section class="notice" aria-label="安全说明">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2.75 20 6v5.2c0 4.72-3.13 8.91-8 10.05-4.87-1.14-8-5.33-8-10.05V6l8-3.25Z"/>
+          <path d="m8.75 12 2.1 2.1 4.45-4.45"/>
+        </svg>
+        <div>
+          <strong>令牌仅写入本机浏览器</strong>
+          <span>不会保存到插件，也不会发送给第三方。</span>
+        </div>
+      </section>
+
+      <form id="loginForm" novalidate>
+        <div class="field-group">
+          <label for="cookieType">会话类型</label>
+          <div class="select-wrap">
+            <select id="cookieType" name="cookieType">
+              <option value="auto">自动识别（推荐）</option>
+              <option value="__Secure-next-auth.session-token">next-auth Session</option>
+              <option value="__Secure-authjs.session-token">authjs Session</option>
+            </select>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m6.25 8 3.75 3.75L13.75 8"/></svg>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="label-row">
+            <label for="sessionToken">Session 令牌</label>
+            <span>必填</span>
+          </div>
+          <div class="token-wrap">
+            <textarea
+              id="sessionToken"
+              name="sessionToken"
+              rows="4"
+              spellcheck="false"
+              autocomplete="off"
+              autocapitalize="off"
+              placeholder="粘贴令牌，或完整的 cookie 名称=令牌"
+              aria-describedby="tokenHelp"
+              required
+            ></textarea>
+            <button id="toggleToken" class="icon-button" type="button" aria-label="显示令牌" aria-pressed="false">
+              <svg class="eye-open" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M2.75 12s3.2-5.25 9.25-5.25S21.25 12 21.25 12 18.05 17.25 12 17.25 2.75 12 2.75 12Z"/>
+                <circle cx="12" cy="12" r="2.35"/>
+              </svg>
+              <svg class="eye-closed" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m4 4 16 16M9.1 7.2A8.42 8.42 0 0 1 12 6.75c6.05 0 9.25 5.25 9.25 5.25a14.2 14.2 0 0 1-2.32 2.83M14.9 16.8a8.42 8.42 0 0 1-2.9.45C5.95 17.25 2.75 12 2.75 12a14.2 14.2 0 0 1 2.32-2.83M10.3 10.3A2.4 2.4 0 0 0 13.7 13.7"/>
+              </svg>
+            </button>
+          </div>
+          <p id="tokenHelp" class="field-help">支持原始令牌、完整 Cookie 或含 sessionToken 的 JSON</p>
+        </div>
+
+        <div id="statusMessage" class="status-message" role="status" aria-live="polite" hidden></div>
+
+        <button id="loginButton" class="primary-button" type="submit">
+          <span>写入会话并打开 ChatGPT</span>
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10h11M11.25 5.75 15.5 10l-4.25 4.25"/></svg>
+        </button>
+      </form>
+
+      <footer>
+        仅用于你本人有权使用的账号 · API Key / Bearer Token 不适用
+      </footer>
+    </main>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

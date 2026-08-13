@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "ChatGPT Session 登录",
+  "version": "1.1.0",
+  "description": "将本人 ChatGPT Session 令牌写入安全 Cookie，并打开 ChatGPT。令牌不会保存在插件中。",
+  "permissions": [
+    "cookies"
+  ],
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://*.chatgpt.com/*"
+  ],
+  "action": {
+    "default_title": "ChatGPT Session 登录",
+    "default_popup": "popup.html"
+  }
+}
